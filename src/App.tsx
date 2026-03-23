@@ -1,51 +1,38 @@
-import Background from './components/Background';
+import { useEffect } from 'react';
 import Navbar from './components/Navbar';
+import BackgroundAnimation from './components/BackgroundAnimation';
 import Hero from './components/Hero';
-import VideoSection from './components/VideoSection';
-import GuidesSection from './components/GuidesSection';
-import FAQSection from './components/FAQSection';
-import HelpCTA from './components/HelpCTA';
+import ContactForm from './components/ContactForm';
+import Calendar from './components/Calendar';
 import Footer from './components/Footer';
-import { motion } from 'motion/react';
-import type { ReactNode } from 'react';
-
-function SectionWrapper({ children }: { children: ReactNode }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
-    >
-      {children}
-    </motion.div>
-  );
-}
 
 export default function App() {
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="min-h-screen relative">
-      <Background />
+    <div className="min-h-screen flex flex-col relative overflow-x-hidden">
+      <BackgroundAnimation />
       <Navbar />
       
-      <main className="relative z-10">
+      <main className="flex-grow">
         <Hero />
-        
-        <SectionWrapper>
-          <VideoSection />
-        </SectionWrapper>
-        
-        <SectionWrapper>
-          <GuidesSection />
-        </SectionWrapper>
-        
-        <SectionWrapper>
-          <FAQSection />
-        </SectionWrapper>
-        
-        <SectionWrapper>
-          <HelpCTA />
-        </SectionWrapper>
+        <ContactForm />
+        <Calendar />
       </main>
 
       <Footer />

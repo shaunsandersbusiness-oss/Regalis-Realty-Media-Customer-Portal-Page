@@ -1,18 +1,20 @@
 export default function Footer() {
   return (
-    <footer className="bg-[#0a0a0a] py-10 px-6 border-t border-[#1a1a1a]">
-      <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center">
+    <footer className="bg-[#0a0a0a] text-center py-[48px] px-[24px] relative z-10">
+      <div className="max-w-7xl mx-auto flex flex-col items-center">
         <img 
           src="https://cdn.prod.website-files.com/6695980889d8d99cedb29bc7/66c7f601fff376e4c95274b3_Regalis%20Realty%20Main%20Logo%20(1).png" 
           alt="Regalis Realty Media" 
-          className="h-auto max-w-[200px] mb-6"
+          className="max-w-[180px] mb-3"
+          referrerPolicy="no-referrer"
         />
-        <p className="text-[#c9a84c] text-[14px] font-medium mb-2">
-          Regalis Realty Media
+        <p className="text-[14px] text-[#c9a84c] mb-2 font-sans">Regalis Realty Media</p>
+        <p className="text-[13px] text-[#999] mb-2">
+          <a href="mailto:contact@regalisrealtymedia.com" className="hover:text-[#c9a84c] transition-colors duration-200">contact@regalisrealtymedia.com</a>
+          {' · '}
+          <a href="tel:9176838034" className="hover:text-[#c9a84c] transition-colors duration-200">(917) 683-8034</a>
         </p>
-        <p className="text-[#666666] text-[12px]">
-          All rights reserved 2025
-        </p>
+        <p className="text-[12px] text-[#666]">All rights reserved 2025</p>
       </div>
     </footer>
   );
