@@ -1,71 +1,57 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function BackgroundAnimation() {
-  const [particles, setParticles] = useState<Array<{ id: number; left: string; duration: string; delay: string }>>([]);
+  const [isMobile, setIsMobile] = useState(false);
+  const [particles, setParticles] = useState<{ id: number; delay: number; duration: number; left: number; driftX: number }[]>([]);
 
   useEffect(() => {
-    const checkMobile = () => window.innerWidth < 768;
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
     
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     // Generate particles
-    const particleCount = checkMobile() ? 6 : 15;
+    const particleCount = window.innerWidth < 768 ? 6 : 15;
     const newParticles = Array.from({ length: particleCount }).map((_, i) => ({
       id: i,
-      left: `${Math.random() * 100}%`,
-      duration: `${17 + Math.random() * 10}s`,
-      delay: `${Math.random() * 15}s`,
+      delay: Math.random() * 15,
+      duration: 17 + Math.random() * 10,
+      left: Math.random() * 100,
+      driftX: -30 + Math.random() * 60,
     }));
     setParticles(newParticles);
 
-    const handleResize = () => {
-      const newCount = checkMobile() ? 6 : 15;
-      if (newCount !== particles.length) {
-        setParticles(Array.from({ length: newCount }).map((_, i) => ({
-          id: i,
-          left: `${Math.random() * 100}%`,
-          duration: `${17 + Math.random() * 10}s`,
-          delay: `${Math.random() * 15}s`,
-        })));
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   return (
-    <>
-      <div className="bg-layer-1" aria-hidden="true"></div>
-      
-      <div className="bg-layer-2" aria-hidden="true">
-        <div className="glow-orb orb-1"></div>
-        <div className="glow-orb orb-2"></div>
-        <div className="glow-orb orb-3"></div>
-      </div>
+    <div className="fixed inset-0 z-0 pointer-events-none" aria-hidden="true">
+      {/* Layer 1: Gradient Base */}
+      <div className="absolute inset-0 bg-layer-1"></div>
 
-      <div className="bg-layer-3" aria-hidden="true">
-        {particles.map((p) => (
-          <div
-            key={p.id}
-            className="gold-particle"
-            style={{
-              left: p.left,
-              bottom: '-10px',
-              animation: `particleFloat ${p.duration} ease-in-out ${p.delay} infinite`,
-            }}
-          />
-        ))}
-      </div>
+      {/* Layer 2: Glow Orbs */}
+      <div className="glow-orb orb-1"></div>
+      <div className="glow-orb orb-2" style={{ width: isMobile ? '400px' : '700px', height: isMobile ? '400px' : '700px' }}></div>
+      {!isMobile && <div className="glow-orb orb-3"></div>}
 
-      <div className="bg-layer-4" aria-hidden="true"></div>
+      {/* Layer 3: Gold Dust Particles */}
+      {particles.map((p) => (
+        <div
+          key={p.id}
+          className="gold-particle"
+          style={{
+            left: `${p.left}%`,
+            bottom: '-10px',
+            animation: `floatParticle ${p.duration}s linear ${p.delay}s infinite`,
+            '--drift-x': `${p.driftX}px`,
+          } as React.CSSProperties}
+        ></div>
+      ))}
 
-      <style>{`
-        @keyframes particleFloat {
-          0% { transform: translateY(0) translateX(0); opacity: 0; }
-          20% { opacity: 0.12; }
-          80% { opacity: 0.12; }
-          100% { transform: translateY(-300px) translateX(${Math.random() > 0.5 ? '20px' : '-20px'}); opacity: 0; }
-        }
-      `}</style>
-    </>
+      {/* Layer 4: Horizon Shimmer Line */}
+      {!isMobile && <div className="shimmer-line"></div>}
+    </div>
   );
 }
