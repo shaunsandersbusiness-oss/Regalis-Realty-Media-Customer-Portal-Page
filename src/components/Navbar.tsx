@@ -38,7 +38,7 @@ export default function Navbar() {
       <div className="nav-inner">
         {/* Logo — links to main website */}
         <a href="https://www.regalisrealtymedia.com" className="nav-logo">
-          <img src="https://cdn.prod.website-files.com/6695980889d8d99cedb29bc7/677588ce72f981235e0deeb9_Regalis%20Realty%20Logo%20Symbol.png" alt="Regalis Realty Media" className="nav-logo-img" />
+          <img src="https://cdn.prod.website-files.com/6695980889d8d99cedb29bc7/66c7f601fff376e4c95274b3_Regalis%20Realty%20Main%20Logo%20(1).png" alt="Regalis Realty Media" className="nav-logo-img" />
         </a>
 
         {/* Desktop Navigation Links */}
@@ -46,11 +46,11 @@ export default function Navbar() {
           <a href="https://www.regalisrealtymedia.com" className="nav-link">Home</a>
           <a href="https://regalisrealtymedia25.pixieset.com/regalisrealtymediaportfolio/compassphotos/" className="nav-link" target="_blank" rel="noreferrer">Portfolio</a>
           <a href="https://pricing.regalisrealtymedia.com" className="nav-link" id="nav-pricing">Pricing</a>
-          <a href="https://calculator.regalisrealtymedia.com" className="nav-link" id="nav-calculator">Calculator</a>
           <a href="https://catalog.regalisrealtymedia.com" className="nav-link" id="nav-catalog">Catalog</a>
           <a href="https://branding.regalisrealtymedia.com" className="nav-link" id="nav-branding">Branding</a>
-          <a href="https://portalguide.regalisrealtymedia.com" className="nav-link active" id="nav-portal">Portal</a>
-          <a href="https://www.regalisrealtymedia.com/calendar" className="nav-link">Contact</a>
+          <a href="https://portal.regalisrealtymedia.com" className="nav-link active" id="nav-portal">Portal</a>
+          <a href="https://contactus.regalisrealtymedia.com" className="nav-link">Contact</a>
+          <a href="https://prep.regalisrealtymedia.com" className="nav-link">Listing Checklist</a>
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -85,11 +85,11 @@ export default function Navbar() {
         <a href="https://www.regalisrealtymedia.com" className="mobile-link" onClick={closeMenu}>Home</a>
         <a href="https://regalisrealtymedia25.pixieset.com/regalisrealtymediaportfolio/compassphotos/" className="mobile-link" target="_blank" rel="noreferrer" onClick={closeMenu}>Portfolio</a>
         <a href="https://pricing.regalisrealtymedia.com" className="mobile-link" id="mobile-nav-pricing" onClick={closeMenu}>Pricing</a>
-        <a href="https://calculator.regalisrealtymedia.com" className="mobile-link" id="mobile-nav-calculator" onClick={closeMenu}>Calculator</a>
         <a href="https://catalog.regalisrealtymedia.com" className="mobile-link" id="mobile-nav-catalog" onClick={closeMenu}>Catalog</a>
         <a href="https://branding.regalisrealtymedia.com" className="mobile-link" id="mobile-nav-branding" onClick={closeMenu}>Branding</a>
-        <a href="https://portalguide.regalisrealtymedia.com" className="mobile-link active" id="mobile-nav-portal" onClick={closeMenu}>Portal</a>
-        <a href="https://www.regalisrealtymedia.com/calendar" className="mobile-link" onClick={closeMenu}>Contact</a>
+        <a href="https://portal.regalisrealtymedia.com" className="mobile-link active" id="mobile-nav-portal" onClick={closeMenu}>Portal</a>
+        <a href="https://contactus.regalisrealtymedia.com" className="mobile-link" onClick={closeMenu}>Contact</a>
+        <a href="https://prep.regalisrealtymedia.com" className="mobile-link" onClick={closeMenu}>Listing Checklist</a>
       </div>
     </nav>
   );
