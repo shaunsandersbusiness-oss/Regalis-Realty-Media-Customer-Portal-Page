@@ -1,40 +1,57 @@
-import React from 'react';
+import { motion } from 'motion/react';
 
 export default function Hero() {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      // Offset for fixed navbar (70px) + some padding
+      const offset = 90;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
-    <section className="pt-[150px] pb-[80px] md:pt-[180px] md:pb-[100px] px-4 relative z-10 flex flex-col items-center text-center fade-in-section">
-      <div className="max-w-[700px] mx-auto">
-        <p className="text-[12px] text-brand-gold uppercase tracking-[3px] font-semibold mb-4">
-          YOUR MEDIA HUB
-        </p>
-        <h1 className="text-[40px] md:text-[52px] text-white font-bold leading-tight mb-6">
-          Your Listing Media, All in One Place
+    <section className="pt-[150px] pb-12 px-6 text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="max-w-[800px] mx-auto"
+      >
+        <h1 className="text-[48px] font-bold text-white mb-4 leading-tight">
+          Your Customer Portal Guide
         </h1>
-        <p className="text-[18px] text-[#D4D4D4] max-w-[560px] mx-auto leading-[1.7] mb-8">
-          Download photos, access videos and 3D tours, create marketing materials, place new orders, and track leads — all from your Regalis customer portal.
+        <p className="text-[18px] text-[#D4D4D4] max-w-[600px] mx-auto mb-10 leading-relaxed">
+          Everything you need to access, download, and use your listing media. Watch the walkthrough or jump to any section below.
         </p>
-        
-        <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-6">
-          <a 
-            href="https://app.aryeo.com/login" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-8 py-4 bg-brand-gold text-black text-[16px] font-bold rounded-lg no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(201,168,76,0.35)] hover:-translate-y-[1px] w-full max-w-[320px] md:w-auto"
+
+        <div className="flex flex-wrap justify-center gap-3">
+          <button 
+            onClick={() => scrollToSection('video')}
+            className="px-5 py-2.5 rounded-full bg-[#0a0a0a] border border-[#c9a84c] text-[#c9a84c] text-[14px] font-medium transition-all hover:bg-[#c9a84c] hover:text-black"
           >
-            Log Into Your Portal →
-          </a>
-          <a 
-            href="#videoGuide" 
-            className="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-[#333] text-[#D4D4D4] text-[16px] font-semibold rounded-lg no-underline transition-all duration-300 hover:border-brand-gold/40 hover:text-brand-gold w-full max-w-[320px] md:w-auto"
+            ▶ Video Walkthrough
+          </button>
+          <button 
+            onClick={() => scrollToSection('guides')}
+            className="px-5 py-2.5 rounded-full bg-[#0a0a0a] border border-[#c9a84c] text-[#c9a84c] text-[14px] font-medium transition-all hover:bg-[#c9a84c] hover:text-black"
           >
-            Watch the Video Guide ↓
-          </a>
+            📖 Step-by-Step Guides
+          </button>
+          <button 
+            onClick={() => scrollToSection('faq')}
+            className="px-5 py-2.5 rounded-full bg-[#0a0a0a] border border-[#c9a84c] text-[#c9a84c] text-[14px] font-medium transition-all hover:bg-[#c9a84c] hover:text-black"
+          >
+            ❓ FAQ & Troubleshooting
+          </button>
         </div>
-        
-        <p className="text-[13px] text-brand-muted">
-          First time? Watch the walkthrough below or read the step-by-step guide.
-        </p>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,26 +1,18 @@
-import React from 'react';
-
 export default function Footer() {
   return (
-    <footer className="bg-brand-card text-center py-12 px-6 mt-20 relative z-10 border-t border-brand-border">
-      <div className="max-w-4xl mx-auto flex flex-col items-center">
+    <footer className="bg-[#0a0a0a] py-10 px-6 border-t border-[#1a1a1a]">
+      <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center">
         <img 
           src="https://cdn.prod.website-files.com/6695980889d8d99cedb29bc7/66c7f601fff376e4c95274b3_Regalis%20Realty%20Main%20Logo%20(1).png" 
           alt="Regalis Realty Media" 
-          className="max-w-[180px] mb-3"
-          referrerPolicy="no-referrer"
+          className="h-auto max-w-[200px] mb-6"
         />
-        <p className="text-[14px] text-brand-gold mb-2 font-sans">Regalis Realty Media</p>
-        <p className="text-[13px] text-brand-muted mb-2">
-          <a href="mailto:contact@regalisrealtymedia.com" className="text-brand-muted no-underline transition-colors duration-200 hover:text-brand-gold">
-            contact@regalisrealtymedia.com
-          </a>
-          {' · '}
-          <a href="tel:9176838034" className="text-brand-muted no-underline transition-colors duration-200 hover:text-brand-gold">
-            (917) 683-8034
-          </a>
+        <p className="text-[#c9a84c] text-[14px] font-medium mb-2">
+          Regalis Realty Media
         </p>
-        <p className="text-[12px] text-[#666]">All rights reserved {new Date().getFullYear()}</p>
+        <p className="text-[#666666] text-[12px]">
+          All rights reserved 2025
+        </p>
       </div>
     </footer>
   );
