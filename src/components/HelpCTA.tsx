@@ -15,12 +15,12 @@ export default function HelpCTA() {
             📞 <span className="text-[#c9a84c] ml-2">(917) 683-8034</span>
           </div>
           <div className="text-[15px] text-[#D4D4D4]">
-            📅 <a href="https://regalisrealtymedia.com/calendar" className="text-[#c9a84c] hover:underline ml-2">Book a Call → regalisrealtymedia.com/calendar</a>
+            📅 <a href="https://contactus.regalisrealtymedia.com/" className="text-[#c9a84c] hover:underline ml-2">Book a Call → contactus.regalisrealtymedia.com</a>
           </div>
         </div>
 
         <a 
-          href="https://www.regalisrealtymedia.com/calendar"
+          href="https://contactus.regalisrealtymedia.com/"
           className="inline-block bg-[#c9a84c] text-black text-[16px] font-bold py-3.5 px-8 rounded-lg transition-all duration-300 hover:shadow-[0_0_24px_rgba(201,168,76,0.25)] hover:bg-[#d4b55d]"
         >
           CONTACT US →
